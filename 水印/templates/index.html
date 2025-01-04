@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片水印编辑器</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>图片水印编辑器</h1>
+        <p>请使用Ctrl+V粘贴图片到下方区域</p>
+        
+        <div class="image-container" id="imageContainer">
+            <div id="dropText">在此粘贴图片</div>
+            <canvas id="imageCanvas" style="display: none;"></canvas>
+        </div>
+
+        <div class="watermark-controls">
+            <div class="control-group">
+                <label for="watermarkText">水印文字：</label>
+                <textarea id="watermarkText" placeholder="输入水印文字，支持换行" rows="3"></textarea>
+            </div>
+
+            <div class="control-group">
+                <label for="fontSize">字体大小：</label>
+                <input type="range" id="fontSize" min="12" max="72" value="24">
+                <span id="fontSizeValue">24px</span>
+            </div>
+
+            <div class="control-group">
+                <label for="watermarkColor">水印颜色：</label>
+                <div class="color-picker-container">
+                    <input type="color" id="watermarkColor" value="#000000">
+                    <div id="colorPreview" class="color-preview"></div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label for="opacity">透明度：</label>
+                <input type="range" id="opacity" min="0" max="100" value="50">
+                <span id="opacityValue">50%</span>
+            </div>
+
+            <div class="control-group">
+                <label for="position">水印位置：</label>
+                <select id="position">
+                    <option value="center">居中</option>
+                    <option value="topLeft">左上角</option>
+                    <option value="topRight">右上角</option>
+                    <option value="bottomLeft">左下角</option>
+                    <option value="bottomRight">右下角</option>
+                </select>
+            </div>
+
+            <div class="button-group">
+                <button id="applyWatermark">应用水印</button>
+                <button id="copyBtn">复制图片</button>
+                <button id="downloadBtn" class="download-btn">下载图片</button>
+            </div>
+        </div>
+
+        <div id="message"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

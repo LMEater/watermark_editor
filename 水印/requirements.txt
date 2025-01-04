@@ -1,0 +1,5 @@
+flask==2.3.3
+werkzeug==2.3.7
+pillow==11.1.0
+pystray==0.19.4
+pyinstaller==6.11.1
